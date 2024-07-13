@@ -1,12 +1,12 @@
-import type { Meta } from './types';
-import BaseLayout from '../components/layout';
+import type { Meta } from '../types';
 
 export default function Top() {
   const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.mdx', {
     eager: true,
   })
   return (
-    <BaseLayout>
+    <div>
+      <h2>Posts</h2>
       <ul class='article-list'>
         {Object.entries(posts).map(([id, module]) => {
           if (module.frontmatter) {
@@ -18,6 +18,6 @@ export default function Top() {
           }
         })}
       </ul>
-    </BaseLayout>
+    </div>
   )
 }
