@@ -6,7 +6,7 @@ export default jsxRenderer(({ children, title, frontmatter }) => {
       <head>
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        {<title>{title ?? frontmatter?.title ?? 'My Blog'}</title>}
+        {<title>{title ?? frontmatter?.title ?? 'ut61z\'s Blog'}</title>}
         <link rel='stylesheet' href='/static/style.css' />
       </head>
       <body>
@@ -16,6 +16,7 @@ export default jsxRenderer(({ children, title, frontmatter }) => {
           </h1>
         </header>
         <main>
+          <p>{frontmatter?.date}</p>
           <article>{children}</article>
         </main>
         <footer>
