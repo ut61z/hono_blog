@@ -4,11 +4,11 @@ body {
   margin: 0;
   padding: 0;
   background: #f4f4f4;
-  color: #333;
+  color: rgb(70, 5, 108);
 }
 
 a:link, a:visited {
-  color: #333;
+  color: rgb(70, 5, 108);
   text-decoration: none;
 }
 
@@ -36,9 +36,9 @@ footer {
 
 .article-list li a {
   text-decoration: none;
-  color: #333;
+  color: rgb(70, 5, 108);
 }
 
 .article-list li a:hover {
-  color: #0275d8;
+  color: #333;
 }
