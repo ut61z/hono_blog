@@ -1,10 +1,14 @@
-name = "my-app"
+name = "hono-blog"
+main = "./dist/index.js"
 compatibility_date = "2024-04-01"
-compatibility_flags = [ "nodejs_compat" ]
-pages_build_output_dir = "./dist"
+compatibility_flags = ["nodejs_compat"]
 
-# [vars]
-# MY_VAR = "my-variable"
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+[vars]
+NODE_ENV = "production"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
