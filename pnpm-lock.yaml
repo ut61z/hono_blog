@@ -34,8 +34,8 @@ importers:
         specifier: ^0.4.2
         version: 0.4.2(hono@4.7.11)
       '@hono/vite-dev-server':
-        specifier: ^0.13.1
-        version: 0.13.1(hono@4.7.11)
+        specifier: ^0.19.1
+        version: 0.19.1(hono@4.7.11)(miniflare@4.20250525.1)(wrangler@4.19.1(@cloudflare/workers-types@4.20250610.0))
       vite:
         specifier: ^5.4.19
         version: 5.4.19(@types/node@20.14.10)
@@ -100,22 +100,10 @@ packages:
       workerd:
         optional: true
 
-  '@cloudflare/workerd-darwin-64@1.20250408.0':
-    resolution: {integrity: sha512-bxhIwBWxaNItZLXDNOKY2dCv0FHjDiDkfJFpwv4HvtvU5MKcrivZHVmmfDzLW85rqzfcDOmKbZeMPVfiKxdBZw==}
-    engines: {node: '>=16'}
-    cpu: [x64]
-    os: [darwin]
-
   '@cloudflare/workerd-darwin-64@1.20250525.0':
     resolution: {integrity: sha512-L5l+7sSJJT2+riR5rS3Q3PKNNySPjWfRIeaNGMVRi1dPO6QPi4lwuxfRUFNoeUdilZJUVPfSZvTtj9RedsKznQ==}
     engines: {node: '>=16'}
     cpu: [x64]
-    os: [darwin]
-
-  '@cloudflare/workerd-darwin-arm64@1.20250408.0':
-    resolution: {integrity: sha512-5XZ2Oykr8bSo7zBmERtHh18h5BZYC/6H1YFWVxEj3PtalF3+6SHsO4KZsbGvDml9Pu7sHV277jiZE5eny8Hlyw==}
-    engines: {node: '>=16'}
-    cpu: [arm64]
     os: [darwin]
 
   '@cloudflare/workerd-darwin-arm64@1.20250525.0':
@@ -124,22 +112,10 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@cloudflare/workerd-linux-64@1.20250408.0':
-    resolution: {integrity: sha512-WbgItXWln6G5d7GvYLWcuOzAVwafysZaWunH3UEfsm95wPuRofpYnlDD861gdWJX10IHSVgMStGESUcs7FLerQ==}
-    engines: {node: '>=16'}
-    cpu: [x64]
-    os: [linux]
-
   '@cloudflare/workerd-linux-64@1.20250525.0':
     resolution: {integrity: sha512-KSyQPAby+c6cpENoO0ayCQlY6QIh28l/+QID7VC1SLXfiNHy+hPNsH1vVBTST6CilHVAQSsy9tCZ9O9XECB8yg==}
     engines: {node: '>=16'}
     cpu: [x64]
-    os: [linux]
-
-  '@cloudflare/workerd-linux-arm64@1.20250408.0':
-    resolution: {integrity: sha512-pAhEywPPvr92SLylnQfZEPgXz+9pOG9G9haAPLpEatncZwYiYd9yiR6HYWhKp2erzCoNrOqKg9IlQwU3z1IDiw==}
-    engines: {node: '>=16'}
-    cpu: [arm64]
     os: [linux]
 
   '@cloudflare/workerd-linux-arm64@1.20250525.0':
@@ -147,12 +123,6 @@ packages:
     engines: {node: '>=16'}
     cpu: [arm64]
     os: [linux]
-
-  '@cloudflare/workerd-windows-64@1.20250408.0':
-    resolution: {integrity: sha512-nJ3RjMKGae2aF2rZ/CNeBvQPM+W5V1SUK0FYWG/uomyr7uQ2l4IayHna1ODg/OHHTEgIjwom0Mbn58iXb0WOcQ==}
-    engines: {node: '>=16'}
-    cpu: [x64]
-    os: [win32]
 
   '@cloudflare/workerd-windows-64@1.20250525.0':
     resolution: {integrity: sha512-mwTj+9f3uIa4NEXR1cOa82PjLa6dbrb3J+KCVJFYIaq7e63VxEzOchCXS4tublT2pmOhmFqkgBMXrxozxNkR2Q==}
@@ -480,12 +450,6 @@ packages:
 
   '@hono/vite-cloudflare-pages@0.4.2':
     resolution: {integrity: sha512-fvSmWNtL7rMTa6tfj0dJNu0UStp8veb2r1BfutoKtJ6GaTzO1sR5ElQw9jIYo46oTBcx8+i/9+NzyGR56awtrQ==}
-    engines: {node: '>=18.14.1'}
-    peerDependencies:
-      hono: '*'
-
-  '@hono/vite-dev-server@0.13.1':
-    resolution: {integrity: sha512-AK0yQkGwoQvcbf0MeBDDslVnVvzlKjAT00Z2A4Oqyh0RYhLQyCT1aSJzz3eZj7tYytG0B6EGt92DjrkB0tsy1A==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
@@ -1379,11 +1343,6 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
 
-  miniflare@3.20250408.2:
-    resolution: {integrity: sha512-uTs7cGWFErgJTKtBdmtctwhuoxniuCQqDT8+xaEiJdEC8d+HsaZVYfZwIX2NuSmdAiHMe7NtbdZYjFMbIXtJsQ==}
-    engines: {node: '>=16.13'}
-    hasBin: true
-
   miniflare@4.20250525.1:
     resolution: {integrity: sha512-4PJlT5WA+hfclFU5Q7xnpG1G1VGYTXaf/3iu6iKQ8IsbSi9QvPTA2bSZ5goCFxmJXDjV4cxttVxB0Wl1CLuQ0w==}
     engines: {node: '>=18.0.0'}
@@ -1671,11 +1630,6 @@ packages:
       terser:
         optional: true
 
-  workerd@1.20250408.0:
-    resolution: {integrity: sha512-bBUX+UsvpzAqiWFNeZrlZmDGddiGZdBBbftZJz2wE6iUg/cIAJeVQYTtS/3ahaicguoLBz4nJiDo8luqM9fx1A==}
-    engines: {node: '>=16'}
-    hasBin: true
-
   workerd@1.20250525.0:
     resolution: {integrity: sha512-SXJgLREy/Aqw2J71Oah0Pbu+SShbqbTExjVQyRBTM1r7MG7fS5NUlknhnt6sikjA/t4cO09Bi8OJqHdTkrcnYQ==}
     engines: {node: '>=16'}
@@ -1783,31 +1737,16 @@ snapshots:
     optionalDependencies:
       workerd: 1.20250525.0
 
-  '@cloudflare/workerd-darwin-64@1.20250408.0':
-    optional: true
-
   '@cloudflare/workerd-darwin-64@1.20250525.0':
-    optional: true
-
-  '@cloudflare/workerd-darwin-arm64@1.20250408.0':
     optional: true
 
   '@cloudflare/workerd-darwin-arm64@1.20250525.0':
     optional: true
 
-  '@cloudflare/workerd-linux-64@1.20250408.0':
-    optional: true
-
   '@cloudflare/workerd-linux-64@1.20250525.0':
     optional: true
 
-  '@cloudflare/workerd-linux-arm64@1.20250408.0':
-    optional: true
-
   '@cloudflare/workerd-linux-arm64@1.20250525.0':
-    optional: true
-
-  '@cloudflare/workerd-windows-64@1.20250408.0':
     optional: true
 
   '@cloudflare/workerd-windows-64@1.20250525.0':
@@ -1986,16 +1925,6 @@ snapshots:
   '@hono/vite-cloudflare-pages@0.4.2(hono@4.7.11)':
     dependencies:
       hono: 4.7.11
-
-  '@hono/vite-dev-server@0.13.1(hono@4.7.11)':
-    dependencies:
-      '@hono/node-server': 1.14.4(hono@4.7.11)
-      hono: 4.7.11
-      miniflare: 3.20250408.2
-      minimatch: 9.0.5
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   '@hono/vite-dev-server@0.19.1(hono@4.7.11)(miniflare@4.20250525.1)(wrangler@4.19.1(@cloudflare/workers-types@4.20250610.0))':
     dependencies:
@@ -3138,23 +3067,6 @@ snapshots:
 
   mime@3.0.0: {}
 
-  miniflare@3.20250408.2:
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      acorn: 8.14.0
-      acorn-walk: 8.3.2
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      stoppable: 1.1.0
-      undici: 5.29.0
-      workerd: 1.20250408.0
-      ws: 8.18.0
-      youch: 3.3.4
-      zod: 3.22.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   miniflare@4.20250525.1:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
@@ -3540,14 +3452,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.14.10
       fsevents: 2.3.3
-
-  workerd@1.20250408.0:
-    optionalDependencies:
-      '@cloudflare/workerd-darwin-64': 1.20250408.0
-      '@cloudflare/workerd-darwin-arm64': 1.20250408.0
-      '@cloudflare/workerd-linux-64': 1.20250408.0
-      '@cloudflare/workerd-linux-arm64': 1.20250408.0
-      '@cloudflare/workerd-windows-64': 1.20250408.0
 
   workerd@1.20250525.0:
     optionalDependencies:

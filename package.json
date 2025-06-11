@@ -19,7 +19,7 @@
     "@cloudflare/workers-types": "^4.20250610.0",
     "@hono/vite-build": "^1.6.2",
     "@hono/vite-cloudflare-pages": "^0.4.2",
-    "@hono/vite-dev-server": "^0.13.1",
+    "@hono/vite-dev-server": "^0.19.1",
     "vite": "^5.4.19",
     "wrangler": "^4.19.1"
   }
