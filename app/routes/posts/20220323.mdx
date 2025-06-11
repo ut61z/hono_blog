@@ -1,0 +1,168 @@
+---
+title: GoのInterfaceの理解 
+date: 20220323
+---
+
+## Interfaceとは？
+
+> interface(インタフェース)型は、メソッドのシグニチャの集まりで定義します。
+そのメソッドの集まりを実装した値を、interface型の変数へ持たせることができます。
+
+
+[https://go-tour-jp.appspot.com/methods/9](https://go-tour-jp.appspot.com/methods/9)
+
+Tour of Go でなんとなくなぞっただけではいまいちピンと来ず、ググっていろいろと調べてみてなんとなく理解できてきたのでアウトプットしてみる
+
+よく例として出されるのは以下のような例
+
+```go
+package main
+
+import "fmt"
+
+type Pikachu struct {
+	Nickname string
+}
+
+type Erebu struct {
+	Nickname string
+}
+
+type Item string
+
+type ItemdeShinkaPokemon interface {
+	shinka(i Item)
+}
+
+func (p Pikachu) shinka(i Item) {
+	fmt.Println("Raichu!! by ", i)
+}
+
+func (e Erebu) shinka(i Item) {
+	fmt.Println("Ereking!! by ", i)
+}
+
+func ShinkaByItem(isp ItemdeShinkaPokemon, i Item) {
+	isp.shinka(i)
+}
+
+func main() {
+	pikao := Pikachu{Nickname: "pikao"}
+	ereko := Erebu{Nickname: "ereko"}
+
+	ShinkaByItem(pikao, "ErekiStone")
+	ShinkaByItem(ereko, "ErekiBooster")
+}
+
+// result
+// Raichu!! by  ErekiStone
+// Ereking!! by  ErekiBooster
+```
+
+`Pikachu` も `Erebu` も `shinka` メソッドを持っていることで暗黙的に `ItemdeShinkaPokemon` interface が適用されて、 `ShinkaByItem` の第一引数になることができる
+
+個人的にしっくり来てなかったのはなんでメソッドの集まりなんだろう？という点だった
+
+TypeScriptのInterfaceみたいに、型の集まりのようなInterfaceならすんなりあーそういうものかと入ってきたと思う
+
+```tsx
+interface MyInterface{
+    name:string
+}
+
+class MyClass implements MyInterface{
+    name:string;
+}
+```
+
+TypeScriptでも関数をinterfaceに定義することはできる、でもGoの場合はメソッド**しか**定義できない
+
+だからInterfaceという名前だけど、これはメソッドの集まりの定義で、そのメソッドを持っているstructのグループ化ができるもの？？という理解だったし、どう使うのかよくわからんとなっていた
+
+## もしGoのInterfaceがTypeScriptみたいに定義できたら
+
+ちょっと趣向を変えて、ではもしGoのInterfaceがTypeScriptみたいに定義できたら...というのを考えてみる
+
+```go
+package main
+
+import "fmt"
+
+type Pikachu struct {
+	Nickname string
+}
+
+type Erebu struct {
+	Nickname string
+}
+
+type Item string
+
+type ItemdeShinkaPokemon interface {
+	Nickname string
+}
+
+func (p Pikachu) shinka(i Item) {
+	fmt.Println("Raichu!! by ", i)
+}
+
+func (e Erebu) shinka(i Item) {
+	fmt.Println("Ereking!! by ", i)
+}
+
+func ShinkaByItem(isp ItemdeShinkaPokemon, i Item) {
+	isp.shinka(i)
+}
+
+func main() {
+	pikao := Pikachu{Nickname: "pikao"}
+	ereko := Erebu{Nickname: "ereko"}
+
+	ShinkaByItem(pikao, "ErekiStone")
+	ShinkaByItem(ereko, "ErekiBooster")
+}
+
+```
+
+もちろん上記のソースコードは誤った書き方なので動かないが、 `ItemdeShinkaPokemon` interfaceは `NIckname string` の型を持っていて、その型と一致するstructが暗黙的に `ItemdeShinkaPokemon` になれるとする
+
+？？？
+
+意味がない、、もしそうであるならinterfaceの出番はなく
+
+```go
+type ItemdeShinkaPokemon struct {
+	Nickname string
+}
+
+type Pikachu struct {
+	ItemdeShinkaPokemon
+}
+
+type Erebu struct {
+	ItemdeShinkaPokemon
+}
+
+pikao := Pikachu{Nickname: "pikao"}
+ereko := Erebu{Nickname: "ereko"}
+```
+
+とすればよい
+
+それに `ShinkaByItem` メソッドで実現したいことは引数で受け取ったstructが `shinka` メソッドを実行すること、なのであれば、必要な条件はそのstructが `shinka` メソッドを持っていることであるべきだ
+
+しかしこのInterfaceではこれを保証できない
+
+## InterfaceとはI/Oをもつメソッドの構造
+ここでやっとGoの思想？に追いついてきて、Interfaceは接続部のインターフェイスの仕様(たとえばTypeの集まり)を定義しているわけではなくて、**外部との接続部(I/O)を持っているブラックボックスとしてのメソッドの構造に着目し、その構造をInterfaceと名付けた**のだと理解した(そしてそれはたしかにInterfaceである)
+
+上記のstructを入れ子にする例で見たように、接続部のインターフェイスの仕様はstruct(型)で十分まかなえているので、それをTypeScriptのようなInterfaceをわざわざ用意するモチベーションがない
+
+なにかメソッドを実行する際に、”このメソッド”は持っていてほしい、でないと処理が成立しないからというとき、
+
+- ”このメソッド”は持っているべきという制約を課したい、あるいは保証がしたい
+- ただし特定のstrucutでなければいけないかといえばメソッド自体はそこに関心がない、欲しい”このメソッド”さえあればよい
+- ”このメソッド”という純粋なかたち(=関数名と引数と返り値)で定義ができていると、安全だし汎用性があるし特定のstructであるべきという依存がはがせる
+- それをInterfaceとしよう
+
+ていう生い立ちで生まれたのかなーなどと想像した
