@@ -20,7 +20,7 @@ export default jsxRenderer(({ children, title, frontmatter }) => {
           <article>{children}</article>
         </main>
         <footer>
-          <p>&copy; 2024 ut61z's Blog. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} ut61z's Blog. All rights reserved.</p>
         </footer>
       </body>
     </html>
