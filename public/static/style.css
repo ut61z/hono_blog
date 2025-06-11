@@ -39,6 +39,11 @@ footer {
   color: rgb(70, 5, 108);
 }
 
+article a:link, article a:visited {
+  color: #003366 !important;
+  text-decoration: underline;
+}
+
 .article-list li a:hover {
   color: #333;
 }

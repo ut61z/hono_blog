@@ -4,6 +4,7 @@ import adapter from '@hono/vite-dev-server/cloudflare'
 import honox from 'honox/vite'
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import rehypeExternalLinks from 'rehype-external-links';
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -12,7 +13,8 @@ export default defineConfig({
     build(),
     mdx({
       jsxImportSource: 'hono/jsx',
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]
+      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+      rehypePlugins: [[rehypeExternalLinks, { target: '_blank' }]]
     })
   ]
 })
