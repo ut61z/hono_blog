@@ -44,6 +44,15 @@ article a:link, article a:visited {
   text-decoration: underline;
 }
 
+article blockquote {
+  border-left: 4px solid #ccc;
+  margin: 1.5em 0;
+  padding: 0.5em 1em;
+  background-color: #f9f9f9;
+  font-style: italic;
+  color: #666;
+}
+
 .article-list li a:hover {
   color: #333;
 }
