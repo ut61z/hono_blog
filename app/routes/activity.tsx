@@ -1,14 +1,12 @@
 import type { Meta } from '../types';
 
-function ContributionGrid({ posts }: { posts: Array<[string, { frontmatter: Meta }]> }) {
-  const currentYear = new Date().getFullYear()
-  
-  // Create a map of week numbers to post counts
+function ContributionGrid({ posts, year }: { posts: Array<[string, { frontmatter: Meta }]>, year: number }) {
+  // Create a map of week numbers to post counts for the specified year
   const postCounts = new Map<number, number>()
   posts.forEach(([_, module]) => {
     if (module.frontmatter?.date) {
       const postDate = new Date(module.frontmatter.date)
-      if (postDate.getFullYear() === currentYear) {
+      if (postDate.getFullYear() === year) {
         const weekNumber = getWeekNumber(postDate)
         postCounts.set(weekNumber, (postCounts.get(weekNumber) || 0) + 1)
       }
@@ -19,7 +17,7 @@ function ContributionGrid({ posts }: { posts: Array<[string, { frontmatter: Meta
   const weeks = []
   for (let week = 1; week <= 52; week++) {
     const count = postCounts.get(week) || 0
-    const weekStart = getDateFromWeek(week, currentYear)
+    const weekStart = getDateFromWeek(week, year)
     const weekEnd = new Date(weekStart)
     weekEnd.setDate(weekEnd.getDate() + 6)
     
@@ -34,7 +32,7 @@ function ContributionGrid({ posts }: { posts: Array<[string, { frontmatter: Meta
   
   return (
     <div class="contribution-grid">
-      <h3>{currentYear}</h3>
+      <h3>{year}</h3>
       <div class="grid-container">
         {weeks.map((week) => (
           <div
@@ -76,31 +74,48 @@ function getDateFromWeek(week: number, year: number): Date {
   return weekStart
 }
 
-export default function Top() {
+export default function Activity() {
   const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.mdx', {
     eager: true,
   })
   const sortedPosts = Object.entries(posts).sort(([a], [b]) => b.localeCompare(a))
   
+  // Get years from 2022 to current year
+  const currentYear = new Date().getFullYear()
+  const years = []
+  for (let year = 2022; year <= currentYear; year++) {
+    years.push(year)
+  }
+  
+  // Calculate total posts
+  const totalPosts = sortedPosts.length
+  
+  // Calculate posts per year
+  const postsPerYear = new Map<number, number>()
+  sortedPosts.forEach(([_, module]) => {
+    if (module.frontmatter?.date) {
+      const year = new Date(module.frontmatter.date).getFullYear()
+      postsPerYear.set(year, (postsPerYear.get(year) || 0) + 1)
+    }
+  })
+  
   return (
     <div>
-      <div class="nav-links">
-        <a href="/activity">All Contributions</a>
+      <h2>Contributions</h2>
+      <div class="activity-summary">
+        <p>Total Posts: <strong>{totalPosts}</strong> posts</p>
+        <div class="yearly-summary">
+          {years.map(year => (
+            <span class="year-stat">
+              {year}: {postsPerYear.get(year) || 0} posts
+            </span>
+          ))}
+        </div>
       </div>
-      <ContributionGrid posts={sortedPosts} />
-      <h2>Posts</h2>
-      <ul class='article-list'>
-        {sortedPosts.map(([id, module]) => {
-          if (module.frontmatter) {
-            return (
-              <li>
-                <a href={`${id.replace(/\.mdx$/, '')}`}>{module.frontmatter.title}</a>
-                <span> - {module.frontmatter.date}</span>
-              </li>
-            )
-          }
-        })}
-      </ul>
+      
+      {years.reverse().map(year => (
+        <ContributionGrid posts={sortedPosts} year={year} />
+      ))}
     </div>
   )
 }

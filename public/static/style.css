@@ -56,3 +56,131 @@ article blockquote {
 .article-list li a:hover {
   color: #333;
 }
+
+/* Contribution Grid Styles */
+.contribution-grid {
+  margin: 20px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.contribution-grid h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2em;
+  color: rgb(70, 5, 108);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(52, 1fr);
+  gap: 3px;
+  margin-bottom: 15px;
+}
+
+.grid-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #ebedf0;
+}
+
+.grid-cell.level-0 {
+  background-color: #ebedf0;
+}
+
+.grid-cell.level-1 {
+  background-color: #9be9a8;
+}
+
+.grid-cell.level-2 {
+  background-color: #40c463;
+}
+
+.grid-cell.level-3 {
+  background-color: #30a14e;
+}
+
+.grid-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.legend-cells {
+  display: flex;
+  gap: 2px;
+}
+
+/* Activity Page Styles */
+.activity-summary {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.activity-summary p {
+  margin: 0 0 15px 0;
+  font-size: 1.1em;
+  color: rgb(70, 5, 108);
+}
+
+.yearly-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.year-stat {
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Navigation Links */
+.nav-links {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.nav-links a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 6px;
+  color: rgb(70, 5, 108);
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-links a:hover {
+  background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(26, 1fr);
+  }
+  
+  .grid-cell {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .yearly-summary {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .nav-links a {
+    display: block;
+    margin: 5px 0;
+  }
+}
