@@ -1,10 +1,12 @@
 import type { Meta } from '../types';
+import { ContributionGrid } from '../components/ContributionGrid';
 
 export default function Top() {
   const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.mdx', {
     eager: true,
   })
   const sortedPosts = Object.entries(posts).sort(([a], [b]) => b.localeCompare(a))
+  
   return (
     <div>
       <h2>Posts</h2>
@@ -20,6 +22,10 @@ export default function Top() {
           }
         })}
       </ul>
+      <ContributionGrid posts={sortedPosts} />
+      <div class="nav-links">
+        <a href="/activity">All Contributions</a>
+      </div>
     </div>
   )
 }
