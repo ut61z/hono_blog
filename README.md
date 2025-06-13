@@ -134,7 +134,3 @@ Your content goes here...
 - `pnpm build` - Build for production
 - `pnpm preview` - Preview built application
 - `pnpm deploy` - Build and deploy to Cloudflare Workers
-
-## License
-
-This project is licensed under the MIT License.
