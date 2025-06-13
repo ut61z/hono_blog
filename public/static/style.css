@@ -73,9 +73,10 @@ article blockquote {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(52, 1fr);
+  grid-template-columns: repeat(18, 1fr);
   gap: 3px;
   margin-bottom: 15px;
+  justify-content: center;
 }
 
 .grid-cell {
@@ -145,33 +146,36 @@ article blockquote {
 
 /* Navigation Links */
 .nav-links {
-  text-align: center;
-  margin: 20px 0;
+  text-align: right;
+  margin: 10px 0;
 }
 
 .nav-links a {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 10px 20px;
-  background: #fff;
-  border-radius: 6px;
   color: rgb(70, 5, 108);
-  text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-decoration: underline;
+  font-size: 0.9em;
 }
 
 .nav-links a:hover {
-  background: #f0f0f0;
+  color: #333;
 }
 
 @media (max-width: 768px) {
+  .contribution-grid {
+    margin: 20px 0;
+    padding: 15px;
+  }
+  
   .grid-container {
-    grid-template-columns: repeat(26, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    gap: 2px;
+    margin-bottom: 15px;
+    justify-content: center;
   }
   
   .grid-cell {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   
   .yearly-summary {
@@ -182,5 +186,21 @@ article blockquote {
   .nav-links a {
     display: block;
     margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contribution-grid {
+    padding: 10px;
+  }
+  
+  .grid-container {
+    grid-template-columns: repeat(13, 1fr);
+    gap: 1px;
+  }
+  
+  .grid-cell {
+    width: 6px;
+    height: 6px;
   }
 }

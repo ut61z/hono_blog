@@ -84,10 +84,6 @@ export default function Top() {
   
   return (
     <div>
-      <div class="nav-links">
-        <a href="/activity">All Contributions</a>
-      </div>
-      <ContributionGrid posts={sortedPosts} />
       <h2>Posts</h2>
       <ul class='article-list'>
         {sortedPosts.map(([id, module]) => {
@@ -101,6 +97,10 @@ export default function Top() {
           }
         })}
       </ul>
+      <ContributionGrid posts={sortedPosts} />
+      <div class="nav-links">
+        <a href="/activity">All Contributions</a>
+      </div>
     </div>
   )
 }
