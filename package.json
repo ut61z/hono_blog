@@ -24,7 +24,7 @@
     "@cloudflare/workers-types": "^4.20250610.0",
     "@hono/vite-build": "^1.6.2",
     "@hono/vite-cloudflare-pages": "^0.4.2",
-    "@hono/vite-dev-server": "^0.19.1",
+    "@hono/vite-dev-server": "^0.20.0",
     "@testing-library/dom": "^10.4.0",
     "@vitest/ui": "^3.2.3",
     "happy-dom": "^18.0.1",
