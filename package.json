@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@mdx-js/rollup": "^3.1.0",
-    "hono": "^4.7.11",
+    "hono": "^4.9.5",
     "honox": "^0.1.42",
     "rehype-external-links": "^3.0.0",
     "rehype-highlight": "^7.0.2",
