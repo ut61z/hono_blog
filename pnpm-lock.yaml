@@ -34,8 +34,8 @@ importers:
         specifier: ^4.20250610.0
         version: 4.20250610.0
       '@hono/vite-build':
-        specifier: ^1.6.2
-        version: 1.6.2(hono@4.7.11)
+        specifier: ^1.8.0
+        version: 1.8.0(hono@4.7.11)
       '@hono/vite-cloudflare-pages':
         specifier: ^0.4.2
         version: 0.4.2(hono@4.7.11)
@@ -510,8 +510,8 @@ packages:
     peerDependencies:
       hono: ^4
 
-  '@hono/vite-build@1.6.2':
-    resolution: {integrity: sha512-wM1KZelUcLiPABYSe/1YtveCkHJxaZ42e68naRznUPKrfVYPAC7wE8Itilmxa81ICZKhb1tBOQ7CHxtGF5dLGw==}
+  '@hono/vite-build@1.8.0':
+    resolution: {integrity: sha512-T/w0Tuv8VV6FgjNnw2aW6LXtRfc5tOhaO54tKCRv4Zqc1tP3w6JyqTFtzJFFDvmY0xTxHS+Pj+ZPLhzFsdiFzQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
@@ -2063,6 +2063,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
@@ -2412,7 +2413,7 @@ snapshots:
     dependencies:
       hono: 4.7.11
 
-  '@hono/vite-build@1.6.2(hono@4.7.11)':
+  '@hono/vite-build@1.8.0(hono@4.7.11)':
     dependencies:
       hono: 4.7.11
 
