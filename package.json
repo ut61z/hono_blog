@@ -23,7 +23,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260303.0",
     "@hono/vite-build": "^1.6.2",
-    "@hono/vite-cloudflare-pages": "^0.4.2",
+    "@hono/vite-cloudflare-pages": "^0.4.3",
     "@hono/vite-dev-server": "^0.19.1",
     "@testing-library/dom": "^10.4.1",
     "@vitest/ui": "^3.2.3",
