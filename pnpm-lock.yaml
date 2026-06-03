@@ -40,8 +40,8 @@ importers:
         specifier: ^0.4.3
         version: 0.4.3(hono@4.12.18)
       '@hono/vite-dev-server':
-        specifier: ^0.25.3
-        version: 0.25.3(hono@4.12.18)(miniflare@4.20260301.1)(wrangler@4.71.0(@cloudflare/workers-types@4.20260602.1))
+        specifier: ^0.26.0
+        version: 0.26.0(hono@4.12.18)(miniflare@4.20260301.1)(wrangler@4.71.0(@cloudflare/workers-types@4.20260602.1))
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -423,6 +423,19 @@ packages:
 
   '@hono/vite-dev-server@0.25.3':
     resolution: {integrity: sha512-w3uQ0KQF0i/SDcJ6+d5njEFTr6pbolajrt/GxV0pliYL+4ywiBqiOFRWSpwW3mTuZ80boww7+ZxJTGTBIzyBQg==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: '*'
+      miniflare: '*'
+      wrangler: '*'
+    peerDependenciesMeta:
+      miniflare:
+        optional: true
+      wrangler:
+        optional: true
+
+  '@hono/vite-dev-server@0.26.0':
+    resolution: {integrity: sha512-DYHht1lge/SRGd1dpOgwhS6DpamSaDtxAOlwl2RkcYyLFy769DZPEX6CeRaUzeDNgClO9JAuT83VptxB5mH5jA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
@@ -1037,8 +1050,8 @@ packages:
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
 
-  brace-expansion@2.1.0:
-    resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
+  brace-expansion@2.1.1:
+    resolution: {integrity: sha512-WR1cURNjuvBLMZBMbqM0UoE+WAfdUcEV1ccD8PVBVOI+Z3ND4+SZbN8RsfT2bMuG1qwz5RFvPukSZm5fF2D5eA==}
 
   brace-expansion@5.0.6:
     resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
@@ -2432,6 +2445,15 @@ snapshots:
       miniflare: 4.20260301.1
       wrangler: 4.71.0(@cloudflare/workers-types@4.20260602.1)
 
+  '@hono/vite-dev-server@0.26.0(hono@4.12.18)(miniflare@4.20260301.1)(wrangler@4.71.0(@cloudflare/workers-types@4.20260602.1))':
+    dependencies:
+      '@hono/node-server': 1.19.14(hono@4.12.18)
+      hono: 4.12.18
+      minimatch: 9.0.9
+    optionalDependencies:
+      miniflare: 4.20260301.1
+      wrangler: 4.71.0(@cloudflare/workers-types@4.20260602.1)
+
   '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.34.5':
@@ -2967,7 +2989,7 @@ snapshots:
 
   blake3-wasm@2.1.5: {}
 
-  brace-expansion@2.1.0:
+  brace-expansion@2.1.1:
     dependencies:
       balanced-match: 1.0.2
 
@@ -3836,7 +3858,7 @@ snapshots:
 
   minimatch@9.0.9:
     dependencies:
-      brace-expansion: 2.1.0
+      brace-expansion: 2.1.1
 
   minimist@1.2.8: {}
 
