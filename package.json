@@ -14,7 +14,7 @@
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "hono": "^4.12.27",
-    "honox": "^0.1.58",
+    "honox": "^0.1.60",
     "rehype-external-links": "^3.0.0",
     "rehype-highlight": "^7.0.2",
     "remark-frontmatter": "^5.0.0",
