@@ -2,7 +2,7 @@ import type { Meta } from '../types';
 import { ContributionGrid } from '../components/ContributionGrid';
 
 export default function Top() {
-  const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.mdx', {
+  const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.{md,mdx}', {
     eager: true,
   })
   const sortedPosts = Object.entries(posts).sort(([a], [b]) => b.localeCompare(a))
@@ -15,7 +15,7 @@ export default function Top() {
           if (module.frontmatter) {
             return (
               <li>
-                <a href={`${id.replace(/\.mdx$/, '')}`}>{module.frontmatter.title}</a>
+                <a href={`${id.replace(/\.mdx?$/, '')}`}>{module.frontmatter.title}</a>
                 <span> - {module.frontmatter.date}</span>
               </li>
             )

@@ -2,7 +2,7 @@ import type { Meta } from '../types';
 import { ContributionGrid } from '../components/ContributionGrid';
 
 export default function Activity() {
-  const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.mdx', {
+  const posts = import.meta.glob<{ frontmatter: Meta }>('./posts/*.{md,mdx}', {
     eager: true,
   })
   const sortedPosts = Object.entries(posts).sort(([a], [b]) => b.localeCompare(a))

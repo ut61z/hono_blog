@@ -8,7 +8,8 @@
     "deploy": "$npm_execpath run build && wrangler deploy",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "post": "node scripts/publish-from-obsidian.ts"
   },
   "private": true,
   "packageManager": "pnpm@11.21.0",
